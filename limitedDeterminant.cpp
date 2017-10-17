@@ -4,6 +4,8 @@
 
      Author: lelexia
 
+     tester: yinzhuang
+
        Date: 2017-10-17
 
 Description: to calculate a limited determinant
@@ -11,8 +13,9 @@ Description: to calculate a limited determinant
      e-mail: lishuxiang@cug.edu.cn
 
 ***********************************************/
+#include <stdbool.h>
 #include <stdio.h>
-#include <cmath>
+#include <math.h>
 #define MAX_SIZE 16		//16 rows*16cols
 
 /*
@@ -27,6 +30,10 @@ inline int
 calculate (int a[MAX_SIZE][MAX_SIZE], int n)
 {
   int result = 0;
+  if (n == 1)
+    {
+      result = a[0][0];
+    }
   if (n == 2)
     {				//directly calculate
       result = a[0][0] * a[1][1] - a[0][1] * a[1][0];
