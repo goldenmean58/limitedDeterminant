@@ -26,10 +26,10 @@ Description: to calculate a limited determinant
 	optimize: no
 */
 
-inline int
-calculate (int a[MAX_SIZE][MAX_SIZE], int n)
+inline float 
+calculate (float a[MAX_SIZE][MAX_SIZE], int n)
 {
-  int result = 0;
+  float result = 0;
   if (n == 1)
     {
       result = a[0][0];
@@ -42,7 +42,7 @@ calculate (int a[MAX_SIZE][MAX_SIZE], int n)
     {
       for (int i = 0; i < n; i++)
 	{
-	  int tmp[MAX_SIZE][MAX_SIZE] = { {0} };
+	  float tmp[MAX_SIZE][MAX_SIZE] = { {0} };
 	  //merge cofactor to a new array
 	  for (int j = 0; j < n - 1; j++)
 	    {
@@ -73,22 +73,22 @@ main (void)
       printf
 	("Please input your limited determinant,and split the numbers by space:\n");
       int n = 0;
-      int input = 0;
-      int tmp[MAX_SIZE][MAX_SIZE] = { {0} };
-      while (~scanf ("%d", &input))
+      float input = 0;
+      float tmp[MAX_SIZE][MAX_SIZE] = { {0} };
+      while (~scanf ("%f", &input))
 	{
 	  tmp[n / MAX_SIZE][n % MAX_SIZE] = input;
 	  n++;
 	}
       int x;
       x = (int) sqrt (n);
-      int a[16][16] = { {0} };
+      float a[16][16] = { {0} };
       for (int i = 0; i < n; i++)
 	{
 	  a[i / x][i % x] = tmp[i / MAX_SIZE][i % MAX_SIZE];
 	}
-      int result = calculate (a, x);
-      printf ("result=%d\n\n", result);
+      float result = calculate (a, x);
+      printf ("result=%f\n\n", result);
     }
   return 0;
 }
