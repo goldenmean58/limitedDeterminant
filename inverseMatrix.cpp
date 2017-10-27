@@ -1,3 +1,12 @@
+/******************************************************************************
+
+   author: LeLeXia
+     date: 08:56:47 10/27/2017
+   e-mail: lishuxiang@cug.edu.cn
+ function: To figure out matrix A's |A|,A*,and A^(-1)
+
+******************************************************************************/
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <math.h>
@@ -68,37 +77,43 @@ calculateDeterminant (float a[MAX_SIZE][MAX_SIZE], int n)
 		}
 	    }
 	  result =
-	    result + pow (-1, i + 2) * a[0][i] * calculateDeterminant (tmp, n - 1);
+	    result + pow (-1, i + 2) * a[0][i] * calculateDeterminant (tmp,
+								       n - 1);
 	}
     }
   return result;
 }
 
 inline float
-test (float a[MAX_SIZE][MAX_SIZE], int n,int x,int y)
+calCompanionMatrix (float a[MAX_SIZE][MAX_SIZE], int n, int x, int y)
 {
-	float result=0;
-	  float tmp[MAX_SIZE][MAX_SIZE] = { {0} };
-	  //merge cofactor to a new array
-	for(int i=0;i<n;i++){
-		for(int j=0;j<n;j++){
-			if(i<x && j<y){
-				tmp[i][j]=a[i][j];
-			}
-			if(i<x && j>y){
-				tmp[i][j-1]=a[i][j];
-			}
-			if(i>x && j<y){
-				tmp[i-1][j]=a[i][j];
-			}
-			if(i>x && j>y){
-				tmp[i-1][j-1]=a[i][j];
-			}
-		}
+  float result = 0;
+  float tmp[MAX_SIZE][MAX_SIZE] = { {0} };
+  //merge cofactor to a new array
+  for (int i = 0; i < n; i++)
+    {
+      for (int j = 0; j < n; j++)
+	{
+	  if (i < x && j < y)
+	    {
+	      tmp[i][j] = a[i][j];
+	    }
+	  if (i < x && j > y)
+	    {
+	      tmp[i][j - 1] = a[i][j];
+	    }
+	  if (i > x && j < y)
+	    {
+	      tmp[i - 1][j] = a[i][j];
+	    }
+	  if (i > x && j > y)
+	    {
+	      tmp[i - 1][j - 1] = a[i][j];
+	    }
 	}
-	  result =
-	     pow (-1, x+y+2) * calculateDeterminant (tmp, n - 1);
-		
+    }
+  result = pow (-1, x + y + 2) * calculateDeterminant (tmp, n - 1);
+
   return result;
 }
 
@@ -127,15 +142,17 @@ main (void)
 	{
 	  for (int j = 0; j < m; j++)
 	    {
-		companionA[j][i]=test(A,n,i,j);
+	      companionA[j][i] = calCompanionMatrix (A, n, i, j);
 	    }
 	}
       printf ("A*=\n");
-	for(int i=0;i<n;i++){
-		for(int j=0;j<m;j++){
-			printf("%f ",companionA[i][j]);
-		}
-		printf("\n");
+      for (int i = 0; i < n; i++)
+	{
+	  for (int j = 0; j < m; j++)
+	    {
+	      printf ("%f ", companionA[i][j]);
+	    }
+	  printf ("\n");
 	}
       //secondly figure out A^(-1)
       float inverseA[MAX_SIZE][MAX_SIZE] = { {0} };
@@ -144,7 +161,7 @@ main (void)
 	{
 	  for (int j = 0; j < m; j++)
 	    {
-		inverseA[i][j]=companionA[i][j];
+	      inverseA[i][j] = companionA[i][j];
 	      inverseA[i][j] /= value;
 	      printf ("%f ", inverseA[i][j]);
 	    }

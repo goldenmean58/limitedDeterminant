@@ -1,8 +1,10 @@
 /******************************************************************************
+
         author: LeLeXia
           date: 22:38:15 10/26/2017
         e-mail: lishuxiang@cug.edu.cn
    description: to calculate the result of two matrixs's(A and B) product(A*B).
+
 ******************************************************************************/
 #include <stdio.h>
 #include <stdbool.h>
