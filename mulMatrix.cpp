@@ -47,7 +47,7 @@ main ()
   while (true)
     {
       //Input Matrix
-      int A[MAX_SIZE][MAX_SZIE] = { {0} }, B[MAX_SIZE][MAX_SIZE] =
+      int A[MAX_SIZE][MAX_SIZE] = { {0} }, B[MAX_SIZE][MAX_SIZE] =
       {
 	{
       0}};
