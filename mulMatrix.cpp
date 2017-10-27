@@ -11,7 +11,7 @@
 #define MAX_SIZE 20
 
 inline void
-Input (int p[MAX_SIZE][MAX_SIZE], int *n, int *m)
+Input (float p[MAX_SIZE][MAX_SIZE], int *n, int *m)
 {
   //Input Matrix
   char *line;
@@ -21,7 +21,7 @@ Input (int p[MAX_SIZE][MAX_SIZE], int *n, int *m)
   *m = 0;
   while (getline (&line, &len, stdin) > 0)
     {
-      while (~sscanf (line, "%d", &p[*n][tmp_m]))
+      while (~sscanf (line, "%f", &p[*n][tmp_m]))
 	{
 	  int i = 0;
 	  while (true)
@@ -49,7 +49,7 @@ main ()
   while (true)
     {
       //Input Matrix
-      int A[MAX_SIZE][MAX_SIZE] = { {0} }, B[MAX_SIZE][MAX_SIZE] =
+      float A[MAX_SIZE][MAX_SIZE] = { {0} }, B[MAX_SIZE][MAX_SIZE] =
       {
 	{
       0}};
@@ -66,19 +66,19 @@ main ()
 	  continue;
 	}
       //calculate
-      int R[an][bm];
+      float R[an][bm];
       printf ("result matrix R(%d,%d):\n", an, bm);
       for (int n = 0; n < an; n++)
 	{
 	  for (int m = 0; m < bm; m++)
 	    {
-	      int r = 0;
+	      float r = 0;
 	      for (int i = 0; i < am; i++)
 		{
 		  r += A[n][i] * B[i][m];
 		}
 	      R[n][m] = r;
-	      printf ("%d ", R[n][m]);	//output
+	      printf ("%f ", R[n][m]);	//output
 	    }
 	  printf ("\n");
 	}
