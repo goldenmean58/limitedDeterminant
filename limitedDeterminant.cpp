@@ -26,7 +26,7 @@ Description: to calculate a limited determinant
 	optimize: no
 */
 
-inline float
+float
 calculate (float a[MAX_SIZE][MAX_SIZE], int n)
 {
   float result = 0;

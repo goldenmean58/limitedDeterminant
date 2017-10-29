@@ -12,7 +12,7 @@
 #include <math.h>
 #define MAX_SIZE 20
 
-inline void
+void
 Input (float p[MAX_SIZE][MAX_SIZE], int *n, int *m)
 {
   //Input Matrix
@@ -44,7 +44,7 @@ Input (float p[MAX_SIZE][MAX_SIZE], int *n, int *m)
     }
 }
 
-inline float
+float
 calculateDeterminant (float a[MAX_SIZE][MAX_SIZE], int n)
 {
   int result = 0;
@@ -84,7 +84,7 @@ calculateDeterminant (float a[MAX_SIZE][MAX_SIZE], int n)
   return result;
 }
 
-inline float
+float
 calCompanionMatrix (float a[MAX_SIZE][MAX_SIZE], int n, int x, int y)
 {
   float result = 0;

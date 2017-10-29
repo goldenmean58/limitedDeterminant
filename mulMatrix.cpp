@@ -10,7 +10,7 @@
 #include <stdbool.h>
 #define MAX_SIZE 20
 
-inline void
+void
 Input (float p[MAX_SIZE][MAX_SIZE], int *n, int *m)
 {
   //Input Matrix
